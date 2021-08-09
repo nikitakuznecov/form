@@ -24,18 +24,33 @@
 
         //Add Fenom object
         $fenom = new \Fenom(new \Fenom\Provider( __DIR__.'/../template/tpl/'));
+
         $fenom->setCompileDir(__DIR__.'/../cache/');
+
         $fenom->setOptions(array("auto_reload"=>true,"force_include"=>true,"strip"=>true,"disable_cache" => 1));
+
         $di->set("Fenom", $fenom);
 
+        //Add Request object
         $request = new Request();
+        
         $di->set("Request", $request);
 
         $controller = new FormController($di);
 
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            
+            $objects = $controller->getUsers();
 
-            $fenom->display("content.tpl",$controller->getUsers());
+            if(count($objects) > 0){
+
+                $fenom->display("content.tpl",$objects );
+
+            }else{
+
+                $fenom->display("content.tpl",array());
+            }
+            
 
         }else{
            

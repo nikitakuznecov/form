@@ -44,6 +44,7 @@
        <!-- MAIN CONTENT -->
        <section class="main">
             <div class="container content">
+            {if count($Users)>0}
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -73,6 +74,7 @@
                         {/foreach}
                     </tbody>
                 </table>
+                {/if}
             </div>
        </section>
       <!-- MAIN CONTENT END -->
