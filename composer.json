@@ -1,0 +1,23 @@
+{
+    "name": "nk_pvc/form",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nikita Kuznecov",
+            "email": "nk_pvc@mail.ru"
+        }
+    ],
+    "require": {
+        "fenom/fenom": "^2.12"
+    },
+	"autoload": {
+	  "psr-4":{
+       "FORM\\":"form.loc/",
+	   "FORM\\Controller\\":"controller/",
+	   "FORM\\Model\\":"model/",
+       "FORM\\View\\":"view/"
+	  }
+	}
+}
+
+
