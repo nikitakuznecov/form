@@ -1,4 +1,5 @@
-<?php
+<?php declare(strict_types=1);
+
 namespace FORM\Model;
 
 class Di
@@ -6,14 +7,14 @@ class Di
     /** 
      * @var array
      */
-    private $container =  array();
+    private array $container =  array();
 
     /**
      * @param $key
      * @param $value
      * @return $this
      */
-    public function set($key, $value)
+    public function set(string $key, $value) : Di
     {
         $this->container[$key] = $value;
 
@@ -24,7 +25,7 @@ class Di
      * @param $key
      * @return mixed
      */
-    public function get($key)
+    public function get(string $key)
     {
         return $this->has($key);
     }
@@ -33,7 +34,7 @@ class Di
      * @param $key
      * @return bool
      */
-    public function has($key)
+    public function has(string $key)
     {
         return isset($this->container[$key]) ? $this->container[$key] : null;
     }

@@ -1,14 +1,15 @@
-<?
+<? declare(strict_types=1);
+
 namespace FORM\Controller;
 use FORM\Model\User;
 
 class FormController
 {
-    private $di;
+    private \FORM\Model\Di $di;
 
-    private $users;
+    private array $users;
 
-    public function __construct($di)
+    public function __construct(\FORM\Model\Di $di)
     {
         $this->di = $di;
     }
@@ -29,6 +30,8 @@ class FormController
 
                 if($id = $this->saveUser($user)){
 
+                    $user->setId($id);
+
                     print_r("Пользователь успешно добавлен!");
                 }
 
@@ -42,7 +45,7 @@ class FormController
 
     }
     
-    public function saveUser(User $user){
+    public function saveUser(User $user) : int{
 
         $db = $this->di->get('DataBase');
 
@@ -54,7 +57,7 @@ class FormController
     }
 
 
-    public function uploadImages($images = []){
+    public function uploadImages(array $images = []) : array{
 
         $result = [];
 
@@ -77,7 +80,7 @@ class FormController
         return $result;
     }
 
-    public function getUsers(){
+    public function getUsers() : array{
 
         $db = $this->di->get('DataBase');
 
@@ -91,7 +94,7 @@ class FormController
 
                 $user = new User($value['name'],$value['phone'],$value['email'],$value['extended']);
 
-                $user->setId($value['id']);
+                $user->setId((int) $value['id']);
                 
                 $this->users['Users'][] = $user;
             }

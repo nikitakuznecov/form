@@ -1,4 +1,4 @@
-<?php
+<? 
 
 namespace FORM\Model;
 
@@ -53,7 +53,7 @@ class Config
               
               $this->config = $data;
               
-              return $this->config;
+              return $this->config; 
              
          }catch(\ErrorException $e){
              
@@ -61,104 +61,6 @@ class Config
              
          }
 
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     * @return string
-     */
-    public function set($key, $value)
-    {
-        try{
-            
-            if(empty ( $key ) ){throw new \ErrorException('Ошибка, ключ не указан!');}
-            
-            if(empty ( $value ) ){throw new \ErrorException('Ошибка, массив значений не указан!');}
-            
-             $this->config[$key] = array_merge($this->config[$key], $value);
-            
-            if(!file_put_contents($this->replacePath(), json_encode($this->config), LOCK_EX)){throw new \ErrorException('Ошибка, данные не получилось записать в файл!');}
-            
-        }catch(\ErrorException $e){
-             
-              return $e->getMessage();
-             
-         }
-    }
-
-    /**
-     * @param $key
-     * @return string
-     */
-    public function addKey($key)
-    {
-        try{
-            
-            if(empty ( $key ) ){throw new \ErrorException('Ошибка, ключ не указан!');}
-            
-             $this->config = array_merge($this->config, array($key=>array()));
-            
-            if(!file_put_contents($this->replacePath(), json_encode($this->config), LOCK_EX)){throw new \ErrorException('Ошибка, данные не получилось записать в файл!');}
-            
-        }catch(\ErrorException $e){
-             
-              return $e->getMessage();
-             
-         }
-    }
-
-    /**
-     * @param $keyParent
-     * @param $keyChildren
-     * @return string
-     */
-    public function remove($keyParent, $keyChildren)
-    {
-      
-        try{
-            
-            if( empty ( $keyParent ) ){throw new \ErrorException('Ошибка, ключ кутегории не указан!');}
-            
-            if( empty ( $keyChildren ) ){throw new \ErrorException('Ошибка, ключ не указан!');}
-            
-            unset($this->config[$keyParent][$keyChildren]);
-            
-            if(!file_put_contents($this->replacePath(), json_encode($this->config), LOCK_EX)){throw new \ErrorException('Ошибка, данные не получилось удалить из файла!');}
-            
-        }catch(\ErrorException $e){
-             
-             return $e->getMessage();
-             
-         }
-    }
-
-    /**
-     * @param $keyParent
-     * @param $keyChildren
-     * @param $valueChildren
-     * @return string
-     */
-    public function update($keyParent, $keyChildren, $valueChildren)
-    {
-      
-        try{
-            
-            if( empty ( $keyParent ) ){throw new \ErrorException('Ошибка, ключ кутегории не указан!');}
-            
-            if( empty ( $keyChildren ) ){throw new \ErrorException('Ошибка, ключ не указан!');}
-            
-            if( empty ( $valueChildren ) ){throw new \ErrorException('Ошибка, значение не указано!');}
-            
-            $this->config[$keyParent][$keyChildren] = $valueChildren;
-            
-            if(!file_put_contents($this->replacePath(), json_encode($this->config), LOCK_EX)){throw new \ErrorException('Ошибка, данные не получилось обновить в файле!');}
-            
-        }catch(\ErrorException $e){
-             
-             return $e->getMessage();
-             
-         }
     }
 
     /**

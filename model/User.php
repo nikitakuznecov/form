@@ -1,22 +1,23 @@
-<?
+<? declare(strict_types=1);
+
 namespace FORM\Model;
 
-class User
+class User 
 {
-    private $id;
+    private int $id;
 
-    private $name;
+    private string $name;
 
-    private $phone;
+    private string $phone;
 
-    private $email;
+    private string $email;
 
-    private $photo;
+    private string $photo;
 
     /**
      * User constructor.
      */
-    public function __construct($name,$phone,$email,$photo)
+    public function __construct(string $name,string $phone,string $email,string $photo)
     {
         $this->name = $name;
 
@@ -27,43 +28,43 @@ class User
         $this->photo = $photo;
     }
 
-    public function getId(){
+    public function getId() : int{
         return $this->id;
     }
 
-    public function setId($id){
+    public function setId(int $id): void {
        $this->id = $id;
     }
 
-    public function getName(){
+    public function getName() : string{
         return $this->name;
     }
 
-    public function setName($name){
+    public function setName(string $name): void {
         $this->name = $name;
     }
 
-    public function getPhone(){
+    public function getPhone() : string{
         return $this->phone;
     }
 
-    public function setPhone($phone){
+    public function setPhone(string $phone): void {
         $this->phone = $phone;
     }
 
-    public function getEmail(){
+    public function getEmail() : string{
         return $this->email;
     }
 
-    public function setEmail($email){
+    public function setEmail(string $email): void {
         $this->email = $email;
     }
 
-    public function getPhoto(){
+    public function getPhoto() : string{
         return $this->photo;
     }
 
-    public function setPhoto($photo){
+    public function setPhoto(string $photo): void {
         $this->photo = $photo;
     }
 }

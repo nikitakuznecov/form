@@ -1,4 +1,4 @@
-<?php
+<? declare(strict_types=1);
 
 namespace FORM\Model;
 
@@ -7,32 +7,32 @@ class Request
     /**
      * @var array
      */
-    public $get = [];
+    public array $get = [];
 
     /**
      * @var array
      */
-    public $post = [];
+    public array $post = [];
 
     /**
      * @var array
      */
-    public $request = [];
+    public array $request = [];
 
     /**
      * @var array
      */
-    public $cookie = [];
+    public array $cookie = [];
 
     /**
      * @var array
      */
-    public $files = [];
+    public array $files = [];
 
     /**
      * @var array
      */
-    public $server = [];
+    public array $server = [];
 
     /**
      * Request constructor.
