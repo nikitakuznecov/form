@@ -8,13 +8,21 @@ $().ready(function() {
 				required: true,
 				email: true
 			},
-			photo: { required: true, extension: "png|jpe?g", filesize: 1048576 }
+			photo: { 
+				required: true, 
+				extension: "png|jpeg|jpg", 
+				filesize: 1048576 
+			}
 		},
 		messages: {
 			name: "Пожалуйста, заполните поле - Ваше имя",
 			phone: "Пожалуйста, заполните поле - Ваш телефон",
 			email: "Пожалуйста, заполните поле - Ваше e-mail",
 			photo: "Файлы должны быть в формате JPG или PNG",
+			photo: {
+				required:"Входные данные проверяются",                  
+				extension:"Файлы должны быть в формате JPG или PNG"
+			}
 		},
 		submitHandler: function() {
              
@@ -39,4 +47,14 @@ $().ready(function() {
 			  });
         },
 	});
+});
+
+let filesExt = ['jpg', 'jpeg', 'png']; 
+
+$('input[type=file]').change(function(){
+    var parts = $(this).val().split('.');
+    if(filesExt.join().search(parts[parts.length - 1]) == -1){
+       $.jGrowl("Файлы должны быть в формате jpg/jpeg или png",{ theme: 'red_theme'});
+       $(this).val('');
+    } 
 });

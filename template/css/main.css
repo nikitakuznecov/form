@@ -11532,6 +11532,9 @@ body .jGrowl-notification {
   color: #fff;
   font-size: 14px;
 }
+body .jGrowl-notification .red_theme{
+  background-color: brown;
+}
 body .jGrowl.top-right {
   right: 0;
   top: 0;

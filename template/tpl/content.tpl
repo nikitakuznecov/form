@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group input-group col-xs-12" id="drop-area">
                                 <span class="input-group-addon"><span class="fas fa-images"></span></span>
-                                <input type="file" name="photo[]" multiple accept=".jpg, .jpeg, .png" class="form-control input-sm" value="" id="photo" required aria-required="true">
+                                <input type="file" name="photo[]" multiple accept="jpg, jpeg, png" class="form-control input-sm" value="" id="photo" required aria-required="true">
                             </div>
                             <div class="form-group col-xs-12">
                                 <center><button type="submit" class="btn btn-success submit">Отправить</button></center>
