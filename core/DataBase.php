@@ -1,5 +1,5 @@
 <?
-namespace FORM\Model;
+namespace FORM\Core;
 
 class DataBase {
 

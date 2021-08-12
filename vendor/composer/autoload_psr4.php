@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'FORM\\View\\' => array($baseDir . '/view'),
     'FORM\\Model\\' => array($baseDir . '/model'),
+    'FORM\\Core\\' => array($baseDir . '/core'),
     'FORM\\Controller\\' => array($baseDir . '/controller'),
     'FORM\\' => array($baseDir . '/form.loc'),
 );

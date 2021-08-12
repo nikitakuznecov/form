@@ -11,6 +11,7 @@ class ComposerStaticInitdfbb4823bef3bf94935b31fa65a0df9b
         array (
             'FORM\\View\\' => 10,
             'FORM\\Model\\' => 11,
+            'FORM\\Core\\' => 10,
             'FORM\\Controller\\' => 16,
             'FORM\\' => 5,
         ),
@@ -24,6 +25,10 @@ class ComposerStaticInitdfbb4823bef3bf94935b31fa65a0df9b
         'FORM\\Model\\' => 
         array (
             0 => __DIR__ . '/../..' . '/model',
+        ),
+        'FORM\\Core\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/core',
         ),
         'FORM\\Controller\\' => 
         array (

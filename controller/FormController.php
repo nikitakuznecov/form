@@ -5,11 +5,11 @@ use FORM\Model\User;
 
 class FormController
 {
-    private \FORM\Model\Di $di;
+    private \FORM\Core\Di $di;
 
     private array $users;
 
-    public function __construct(\FORM\Model\Di $di)
+    public function __construct(\FORM\Core\Di $di)
     {
         $this->di = $di;
     }

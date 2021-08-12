@@ -5,10 +5,10 @@
 
     require_once __DIR__ .'/../vendor/autoload.php';
 
-    use FORM\Model\Di;
-    use FORM\Model\DataBase;
-    use FORM\Model\Config;
-    use FORM\Model\Request;
+    use FORM\Core\Di;
+    use FORM\Core\DataBase;
+    use FORM\Core\Config;
+    use FORM\Core\Request;
     use FORM\Controller\FormController;
 
     try{
@@ -16,8 +16,7 @@
         $di = new Di();
 
         //Add config
-        $config = new Config();
-        $di->set("Config",$config->get());
+        $di->set("Config",Config::getInstance()->get());
 
         //Add DataBase object
         $di->set("DataBase",DataBase::getDB($di));
@@ -38,7 +37,7 @@
 
         $controller = new FormController($di);
 
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        if ($request->server['REQUEST_METHOD'] !== 'POST') {
             
             $objects = $controller->getUsers();
 

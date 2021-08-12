@@ -1,6 +1,6 @@
 <? declare(strict_types=1);
 
-namespace FORM\Model;
+namespace FORM\Core;
 
 class Request
 {

@@ -30,7 +30,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'e34f03b5e5e9026c70de8f6dcb6170c085560334',
+    'reference' => 'ed9a5d9ce807ea0e7deb4dd3af54cb83b8ac06b2',
     'name' => 'nk_pvc/form',
   ),
   'versions' => 
@@ -51,7 +51,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'e34f03b5e5e9026c70de8f6dcb6170c085560334',
+      'reference' => 'ed9a5d9ce807ea0e7deb4dd3af54cb83b8ac06b2',
     ),
   ),
 );
