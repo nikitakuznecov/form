@@ -19,7 +19,7 @@
         $di->set("Config",Config::getInstance()->get());
 
         //Add DataBase object
-        $di->set("DataBase",DataBase::getDB($di));
+        $di->set("DataBase",DataBase::getInstance());
 
         //Add Fenom object
         $fenom = new \Fenom(new \Fenom\Provider( __DIR__.'/../template/tpl/'));
