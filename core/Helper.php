@@ -26,4 +26,40 @@ class Helper extends Singleton
         return $path;
 
     }
+
+    /**
+     * @return bool
+     */
+    public function isPost()
+    {
+        if($_SERVER['REQUEST_METHOD'] == 'POST')
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMethod()
+    {
+        return $_SERVER['REQUEST_METHOD'];
+    }
+
+    /**
+     * @return bool|string
+     */
+    public function getPathUrl()
+    {
+        $pathUrl = $_SERVER['REQUEST_URI'];
+
+        if($position = strpos($pathUrl, '?'))
+        {
+            $pathUrl = substr($pathUrl, 0, $position);
+        }
+
+        return $pathUrl;
+    }
 }

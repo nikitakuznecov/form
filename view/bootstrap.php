@@ -8,8 +8,9 @@
     use FORM\Core\Di;
     use FORM\Core\DataBase;
     use FORM\Core\Config;
+    use FORM\Core\Project;
     use FORM\Core\Request;
-    use FORM\Controller\FormController;
+    use FORM\Core\Router;
 
     try{
         //Include DI
@@ -21,40 +22,26 @@
         //Add DataBase object
         $di->set("DataBase",DataBase::getInstance());
 
-        //Add Fenom object
+        //Add Request object
+        $di->set("Request", new Request());
+
+        //Add Router object
+        $di->set("Router", new Router(gethostname()));
+
         $fenom = new \Fenom(new \Fenom\Provider( __DIR__.'/../template/tpl/'));
 
         $fenom->setCompileDir(__DIR__.'/../cache/');
 
         $fenom->setOptions(array("auto_reload"=>true,"force_include"=>true,"strip"=>true,"disable_cache" => 1));
 
+        //Add Fenom object
         $di->set("Fenom", $fenom);
 
-        //Add Request object
-        $request = new Request();
-        
-        $di->set("Request", $request);
+        //Instantiate Project
+        $project = new Project($di);
 
-        $controller = new FormController($di);
-
-        if ($request->server['REQUEST_METHOD'] !== 'POST') {
-            
-            $objects = $controller->getUsers();
-
-            if(count($objects) > 0){
-
-                $fenom->display("content.tpl",$objects );
-
-            }else{
-
-                $fenom->display("content.tpl",array());
-            }
-            
-
-        }else{
-           
-            $controller->index();
-        }
+        //Project run
+        $project->run();
 
     }catch (\ErrorException $e) {
 

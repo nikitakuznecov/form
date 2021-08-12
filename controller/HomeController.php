@@ -3,14 +3,32 @@
 namespace FORM\Controller;
 use FORM\Model\User;
 
-class FormController extends Controller
+class HomeController extends Controller
 {
 
     private array $users;
 
     public function index(){
 
+        $fenom = $this->di->get('Fenom');
+
+        $objects = $this->getUsers();
+
+        if(count($objects) > 0){
+
+            $fenom->display("content.tpl",$objects );
+
+        }else{
+
+            $fenom->display("content.tpl",array());
+        }
+    }
+
+    public function addUser(){
+
         $request = $this->di->get('Request');
+
+        $fenom = $this->di->get('Fenom');
 
         $post = $request->post;
 
@@ -26,7 +44,12 @@ class FormController extends Controller
 
                     $user->setId($id);
 
-                    print_r("Пользователь успешно добавлен!");
+                    $objects = $this->getUsers();
+
+                    $result = $fenom->fetch("table.tpl", $objects);
+
+                    print(json_encode(array('Success'=>true,'Message'=>'Пользователь успешно добавлен!','arrResponse'=>$result)));
+
                 }
 
             }
