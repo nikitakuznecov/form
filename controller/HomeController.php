@@ -6,7 +6,7 @@ use FORM\Model\User;
 class HomeController extends Controller
 {
 
-    private array $users;
+    private $users = [];
 
     public function index(){
 
@@ -14,9 +14,9 @@ class HomeController extends Controller
 
         $objects = $this->getUsers();
 
-        if(count($objects) > 0){
+        if($objects){
 
-            $fenom->display("content.tpl",$objects );
+            $fenom->display("content.tpl",$objects);
 
         }else{
 
@@ -105,7 +105,7 @@ class HomeController extends Controller
 
         $result = $db->select($query); 
 
-        if(count($result) > 0){
+        if($result){
 
             foreach($result as $key => $value){
 
