@@ -2,7 +2,10 @@
 
 namespace FORM\Core;
 
-
+/**
+ * Класс логер, основная задача упросить работу
+ * с логом сообщений
+ */
 class Logger extends Singleton
 {
     /**

@@ -2,6 +2,10 @@
 
 namespace FORM\Core;
 
+/**
+ * Класс помощник тут собраны
+ * часто используемые методы
+ */
 class Helper extends Singleton
 {
     /**

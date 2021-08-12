@@ -1,20 +1,23 @@
-<?php declare(strict_types=1);
+<?php
 
 namespace FORM\Core;
 
+/**
+ * Класс контейнер зависимостей
+ */
 class Di
 {
-    /** 
+    /**
      * @var array
      */
-    private array $container =  array();
+    private $container = [];
 
     /**
      * @param $key
      * @param $value
      * @return $this
      */
-    public function set(string $key, $value) : Di
+    public function set($key, $value): Di
     {
         $this->container[$key] = $value;
 
@@ -23,20 +26,21 @@ class Di
 
     /**
      * @param $key
-     * @return mixed
+     * @return mixed|null
      */
-    public function get(string $key)
+    public function get($key): mixed
     {
         return $this->has($key);
     }
 
     /**
      * @param $key
-     * @return bool
+     * @return mixed|null
      */
-    public function has(string $key)
+    public function has($key): mixed
     {
         return isset($this->container[$key]) ? $this->container[$key] : null;
     }
 }
+
 ?>

@@ -2,6 +2,9 @@
 
 namespace FORM\Core;
 
+/**
+ * Простенький класс для работы с базой данных MSQL
+ */
 class DataBase extends Singleton
 {
     /**
@@ -31,7 +34,7 @@ class DataBase extends Singleton
     /**
      * Вспомогательный метод, который заменяет "символ значения в запросе" на конкретное значение, которое проходит через "функции безопасности"
      */
-    protected function getQuery($query, $params)
+    protected function getQuery($query, $params): mixed
     {
         if ($params) {
             for ($i = 0; $i < count($params); $i++) {
@@ -46,7 +49,8 @@ class DataBase extends Singleton
     /**
      * SELECT-метод, возвращающий таблицу результатов
      */
-    public function select($query, $params = false)
+
+    public function select($query, $params = false): mixed
     {
         $result_set = $this->mysqli->query($this->getQuery($query, $params));
         if (!$result_set) return false;
@@ -56,7 +60,8 @@ class DataBase extends Singleton
     /**
      * SELECT-метод, возвращающий одну строку с результатом
      */
-    public function selectRow($query, $params = false)
+
+    public function selectRow($query, $params = false): mixed
     {
         $result_set = $this->mysqli->query($this->getQuery($query, $params));
         if ($result_set->num_rows != 1) return false;
@@ -66,7 +71,8 @@ class DataBase extends Singleton
     /**
      * SELECT-метод, возвращающий значение из конкретной ячейки
      */
-    public function selectCell($query, $params = false)
+
+    public function selectCell($query, $params = false): mixed
     {
         $result_set = $this->mysqli->query($this->getQuery($query, $params));
         if ((!$result_set) || ($result_set->num_rows != 1)) return false;
@@ -79,7 +85,7 @@ class DataBase extends Singleton
     /**
      * НЕ-SELECT методы (INSERT, UPDATE, DELETE). Если запрос INSERT, то возвращается id последней вставленной записи
      */
-    public function query($query, $params = false)
+    public function query($query, $params = false): mixed
     {
         $success = $this->mysqli->query($this->getQuery($query, $params));
         if ($success) {
@@ -91,7 +97,8 @@ class DataBase extends Singleton
     /**
      * Преобразование result_set в двумерный массив
      */
-    protected function resultSetToArray($result_set)
+
+    protected function resultSetToArray($result_set): array
     {
         $array = array();
         while (($row = $result_set->fetch_assoc()) != false) {

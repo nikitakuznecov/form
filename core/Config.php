@@ -2,6 +2,10 @@
 
 namespace FORM\Core;
 
+/**
+ * Класс конфигурация, основная задача получить данные
+ * из конфига и сформировать объект соответствующий
+ */
 class Config extends Singleton
 {
 
@@ -38,7 +42,7 @@ class Config extends Singleton
     /**
      * @return string
      */
-    public function getFileName()
+    public function getFileName(): string
     {
         return $this->fileName;
     }
@@ -46,7 +50,7 @@ class Config extends Singleton
     /**
      * @param string $fileName
      */
-    public function setFileName($fileName)
+    public function setFileName($fileName): string
     {
         $this->fileName = $fileName;
     }
@@ -54,7 +58,7 @@ class Config extends Singleton
     /**
      * @return mixed|string
      */
-     public function get()
+     public function get(): mixed
      {
          
          try{
