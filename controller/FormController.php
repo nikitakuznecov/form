@@ -1,18 +1,12 @@
-<? declare(strict_types=1);
+<?
 
 namespace FORM\Controller;
 use FORM\Model\User;
 
-class FormController
+class FormController extends Controller
 {
-    private \FORM\Core\Di $di;
 
     private array $users;
-
-    public function __construct(\FORM\Core\Di $di)
-    {
-        $this->di = $di;
-    }
 
     public function index(){
 
