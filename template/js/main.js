@@ -43,10 +43,9 @@ $().ready(function() {
 				}
 			})
 				.then(function(response) {
-					console.log(response.data['Message']);
 					$.jGrowl(response.data['Message']);
-                    $('.content').html(response.data['arrResponse']);
-                    form.reset();
+                    $(".table-row").append(response.data['arrResponse']);
+                    form[0].reset();
 				})
 				.catch(function(error) {
 					console.log(error);

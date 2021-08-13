@@ -44,9 +44,9 @@ class HomeController extends Controller
 
                     $user->setId($id);
 
-                    $objects = $this->getUsers();
+                    $this->users['Users'][] = $user;
 
-                    $result = $fenom->fetch("table.tpl", $objects);
+                    $result = $fenom->fetch("table-row.tpl", $this->users);
 
                     print(json_encode(array('Success'=>true,'Message'=>'Пользователь успешно добавлен!','arrResponse'=>$result)));
 
@@ -119,6 +119,14 @@ class HomeController extends Controller
         }
 
         return $this->users;
+    }
+
+    /**
+     * @param array $users
+     */
+    public function setUsers(array $users): void
+    {
+        $this->users = $users;
     }
 
 }
